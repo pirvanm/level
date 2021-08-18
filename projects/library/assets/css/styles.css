@@ -1,0 +1,677 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+
+/*
+
+THIS IS A MOBILE FIRST DESIGN AND THEN USING MEDIA QUERIES WE WORK THE DESIGN FOR LARGER DEVICES
+WE USE CSS VARIABLES, FLEXBOX, GRID AND THE GENERAL CSS FEATURES
+FOR COLORS WE USE HE HSL FUNCTION, THE BEST ONE TO USE TO GET EASY SHADOES OF THE SAME COLOR
+
+*/
+
+
+/*=================== VARIABLES  =================== */
+:root {
+    --header-height: 4rem;
+
+    --text-color: #fff;
+    --text-color-alt: hsla(234, 18%, 67%, 1);
+    --body-color: 	hsl(231, 38%, 18%);
+    --body-color-alt: 	hsl(231, 35%, 22%);
+    --bg-color: hsla(230, 36%, 26%, 1);
+    --body-font: 'Poppins', sans-serif;
+
+    --normal-font-size: 938rem;
+
+    --z-fixed: 10,
+}
+
+
+/*=================== BAE STLYE  =================== */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+a {
+    text-decoration: none;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+ul {
+    list-style: none;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+html, body {
+    height: 100vh;
+}
+
+body {
+    margin-top: var(--header-height);
+    background-color: var(--body-color);
+    font-family: var(--body-font);
+    color: var(--first-color);
+}
+
+.grid {
+    display: grid;
+}
+
+.container {
+    width: 100%;
+    padding: 0 1rem;
+    margin: 0 auto;
+}
+
+/*=================== HEADER  =================== */
+header {
+    width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 99999999;
+    background-color: var(--body-color);
+}
+
+
+/*=================== NAV  =================== */
+
+.nav {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem;
+}
+
+.nav__logo {
+    font-size: 1.3rem;
+    color: var(--text-color);
+}
+
+.nav__menu {
+    position: fixed;
+    width: 100%;
+    top: -100%;
+    left: 0;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, .15);
+    border-radius: 0 0 1.5rem 1.5rem;
+    transition: .4s;
+    background-color: var(--body-color);
+    padding: 1rem 0;
+    padding-top: 2.5rem;
+    z-index: 1000;
+}
+
+.show-menu {
+    top: 0;
+}
+
+.nav__list {
+    position: relative;
+    grid-template-columns: repeat(1, 1fr);
+    gap: 3rem;
+}
+
+.nav__link {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: var(--text-color-alt);
+    font-size: 1rem;
+    font-weight: bold;
+}
+
+.nav__link:hover {
+    color: var(--text-color);
+}
+
+.link__active {
+    color: var(--text-color);
+}
+
+.nav__icon {
+    font-size: 1.3rem;
+}
+
+.nav__close {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    font-size: 1.3rem;
+    color: var(--text-color);
+    cursor: pointer;
+}
+
+.nav__btns {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.nav__btns .nav__toggle i {
+    color: var(--text-color);
+    font-size: 1.3rem;
+    cursor: pointer;
+}
+
+.nav__btns .nav__toggle:hover i {
+    color: var(--text-color-alt);
+}
+
+.profile-image {
+    border-radius: 100%;
+    cursor: pointer;
+}
+
+/*=================== MAIN  ( SEARCH ) =================== */
+
+.search {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    background-color: var(--bg-color);
+    border-radius: .5rem;
+    margin-bottom: 2rem;
+}
+
+.search__input {
+    width: 100%;
+    background-color: var(--bg-color);
+    outline: none;
+    border: none;
+    padding: 1rem;
+    color: var(--text-color);
+    border-radius: .5rem;
+}
+
+.search__input::placeholder {
+    color: var(--text-color);
+    font-family: var(--body-font);
+}
+
+.search__icon {
+    color: var(--text-color);
+    background-color: var(--bg-color);
+    padding-left: 1rem;
+    padding-right: 1rem;
+}
+
+/*=================== MAIN  ( WELCOME ) =================== */
+
+.welcome {
+    background-color: var(--bg-color);
+    margin-top: 1rem;
+    padding: 1rem;
+    color: var(--text-color);
+    border-radius: 1rem;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 2rem;
+}
+
+.welcome__message {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.welcome__message-title {
+    margin-bottom: .5rem;
+    font-size: 1.7rem;
+    align-self: flex-start;
+}
+
+.welcome__message-subtitle {
+    align-self: flex-start;
+    margin-bottom: 1.5rem;
+}
+
+.button {
+    color: #fff;
+    background-color: var(--body-color);
+    padding: 1rem;
+    border-radius: .7rem;
+    text-align: center;
+    align-self: flex-start;
+    margin-bottom: 1rem;
+}
+
+/*=================== MAIN  ( RECOMMENDED ) =================== */
+
+.recommended__title {
+    color: var(--text-color-alt);
+    font-size: 1rem;
+    margin-bottom: 2rem;
+}
+
+.recommended__content {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    flex-wrap: wrap;
+}
+
+.recommended__book {
+    font-size: 1rem;
+    color: var(--text-color);
+    display: flex;
+    align-items: center;
+    margin-bottom: 2rem;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.recommended__book-data {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.book__data-title {
+    margin-bottom: .5rem;
+    font-size: 1.2rem;
+}
+
+.book__data-subtitle {
+    font-size: .9rem;;
+    color: var(--text-color-alt);
+    margin-bottom: 1rem;
+}
+
+.book__data-stars {
+    margin-bottom: 1rem;
+}
+
+.book__data-description {
+    font-size: .8rem;
+    flex-grow: 1;
+    width: 100%;
+    flex: 1;
+    width: 100%;
+}
+
+/*=================== MAIN  ( AWARDS ) =================== */
+
+.awards__tabs {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 2rem;
+}
+
+.awards__tabs h3 {
+    color: var(--text-color-alt);
+    margin-bottom: 1rem;
+    cursor: pointer;
+}
+
+.awards__tabs h3.active {
+    color: var(--text-color);
+}
+
+.awarded__tabs-years {
+    grid-template-columns: repeat(4, 1fr);
+    gap: .6rem;
+    align-items: center;
+    justify-content: space-between;
+    padding-bottom: 1rem;
+}
+
+.awarded__tabs-years span {
+    color: var(--text-color);
+    font-family: var(--body-font);
+    text-align: center;
+    cursor: pointer;
+}
+
+.awarded__tabs-years span.active {
+    border-bottom: 2px solid #fff;
+}
+
+.line {
+    width: 100%;
+    background-color: var(--bg-color);
+    height: 3px;
+    margin-bottom: 2rem;
+}
+
+/*=================== USER  ( RIGHT SIDE ) =================== */
+
+.user {
+    display: none;
+}
+
+/*=================== USER  ( USER TOP ICONS ) =================== */
+
+.user__top {
+    margin-top: 2rem;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 1rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    margin-bottom: 6rem;
+}
+
+.user__top-icon {
+    color: var(--text-color);
+    font-size: 1.8rem;
+    cursor: pointer;
+}
+
+.user__top-img {
+    width: 45px;
+    height: 45px;
+}
+
+/*=================== USER  ( USER PROFILE ) =================== */
+
+.user__profile {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    color: var(--text-color);
+}
+
+.user__profile-img {
+    margin-bottom: 1rem;
+}
+
+.user__profile-name,
+.user__profile-email {
+    font-weight: normal;
+}
+
+.user__profile_icon {
+    color: var(--text-color-alt);
+    font-size: 5rem;
+    margin-top: 2rem;
+}
+
+.user__profile-achievement {
+    font-size: 1.3rem;
+    font-weight: 400;
+    margin-bottom: 2rem;
+
+}
+
+/*=================== USER  ( THE TWO INFO BOXES ) =================== */
+
+.info {
+    display: flex;
+    flex-direction: column;
+    padding-left: 2rem;
+    justify-content: flex-start;
+}
+
+.info__list {
+    display: flex;
+    gap: .7rem;
+    color: var(--text-color);
+    margin-bottom: 3rem;
+}
+
+.info__list-banner {
+    background-color: var(--bg-color);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100px;
+    border-radius: .7rem;
+}
+
+.banner__icon {
+    font-size: 1.8rem;
+}
+
+.info__list-details {
+    display: flex;
+    flex-direction: column;
+}
+
+.books__number {
+    color: var(--text-color-alt);
+    font-size: .9rem;
+    margin-bottom: .5rem;
+}
+
+.info__status {
+    font-size: .8rem;
+}
+
+/*=================== USER  ( BOX AT BOTTOM ) =================== */
+
+.box {
+    display: flex;
+    flex-direction: column;
+    padding: 2rem;
+    color: #fff;
+    background-color: var(--bg-color);
+    border-radius: .7rem;
+}
+
+.box__title {
+    font-size: 1.3rem;
+    margin-bottom: 2rem;
+}
+
+.box__description {
+    font-size: .9rem;
+    margin-bottom: 1rem;
+}
+
+.button--alt {
+    background-color: var(--text-color-alt);
+    color: #fff;
+    border-radius: 2rem;
+    padding-left: 2rem;
+    padding-right: 2rem;
+}
+
+.nav__item__1024 {
+    display: none;
+}
+
+/*=================== MEDIA QUERIES TO MAKE IT WORK ON LARGER DEVICES =================== */
+
+@media screen and (min-width: 530px) {
+    .welcome {
+        flex-direction: row;
+        position: relative;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .welcome__message {
+        order: 1;
+    }
+
+    .welcome__img {
+        order: 2;  
+        width: 50%;
+    }
+
+    .book__data-description {
+        max-width: 200px;
+    }
+
+    .recommended__book {
+        justify-content: flex-start;
+    }
+
+    .awards__tabs { 
+        flex-direction: row;
+        gap: 1rem;
+        margin-bottom: 1rem;
+    }
+
+    .awards__tabs h3 {
+        font-size: .9rem;
+    }
+
+    .awarded__tabs-years span  {
+        font-size: .8rem;
+    }
+}
+
+@media screen and (min-width: 768px) {
+    .recommended__content {
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .last__book {
+        justify-content: flex-end;
+        margin-right: 50px;
+    }
+
+    .awards__tabs {
+        flex-direction: row;
+        font-size: .9rem;
+        gap: 1.5rem;
+    }
+}
+
+@media screen and (min-width: 1024px) {
+    body {
+        margin-top: 0;
+    }
+
+    .page-container {
+        grid-template-columns: .3fr 1fr;
+    }
+
+    .header {
+        position: initial;
+        margin-top: 2rem;
+    }
+
+    .nav {
+        flex-direction: column;
+        align-items: flex-start;
+        width: 220px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .nav__logo {
+        font-size: 2rem;
+        margin-bottom: 1rem;
+    }
+
+    .nav__menu {
+        position: initial;
+    }
+
+    .nav__menu {
+        box-shadow: none;
+    }
+
+    .nav__item {
+        display: flex;
+        justify-content: flex-start;
+    }
+
+    .nav__link {
+        width: 100px;
+        display: flex;
+        flex-direction: row;
+        gap: 1rem;
+    }
+
+    .nav__icon {
+        width: 15px;
+        font-size: 1.5rem;
+    }
+
+    .nav__btns .nav__toggle {
+        display: none;
+    }
+
+    .nav__close {
+        display: none;
+    }
+
+    .profile-image {
+        display: none;
+    }
+
+    .user {
+        display: none;
+    }
+
+    .main {
+        background-color: var(--body-color-alt);
+        min-height: 100vh;
+        border-top-left-radius: 4rem;
+    }
+
+    .main__container {
+        padding: 1rem 3rem;
+        margin-top: 2rem;
+    }
+
+    .search {
+        margin-bottom: 3rem;
+        padding: .8rem;
+    }
+
+    .welcome {
+        padding-right: 2rem;
+        padding-left: 2rem;
+    }
+    
+}
+
+@media screen and (min-width: 1200px) {
+    .nav__item__1024 {
+        display: none;
+    }
+
+    .search__input {
+        font-size: 1rem;
+    }
+
+    .search__input::placeholder{
+        font-size: 1rem;
+    }
+
+    .search__icon {
+        font-size: 1.5rem;
+    }
+
+    .welcome {
+        min-height: 300px;
+    }
+
+    .page-container {
+        grid-template-columns: .3fr 1fr .3fr;
+    }
+
+    .user {
+        display: initial;
+    }
+
+    .recommended__content {
+        flex-wrap: nowrap;
+    }
+
+    .awarded__tabs-years {
+        grid-template-columns: repeat(14, 1fr);
+    }
+}
+
