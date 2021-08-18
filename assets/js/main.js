@@ -55,6 +55,7 @@
 
     let modal = function(modalClick) {
         modalViews[modalClick].classList.add('modal-active');
+        window.location.hash = modalViews[modalClick].dataset.hash;
     }
 
     modalsBtns.forEach((modalBtn, i) => {
@@ -70,6 +71,26 @@
             })
         });
     });
+
+    function loadModalBasedOnHash() {
+        modalViews.forEach((modal) => {
+            modal.classList.remove('modal-active');
+        })
+
+        if(window.location.hash) {
+            let hash = window.location.hash;
+            let projectNumModal = parseInt(hash[hash.length - 1]);
+
+            modal(projectNumModal + 2);
+
+        } 
+    }
+
+    window.addEventListener('hashchange', () => {
+        loadModalBasedOnHash();
+      }, false);
+
+      loadModalBasedOnHash();
 
     if (menuToggle) {
         menuToggle.addEventListener('click', () => {
